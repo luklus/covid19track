@@ -1,0 +1,28 @@
+.info {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 0;
+  width: 100%;
+
+  .item {
+    margin: 1rem 2rem;
+
+    p {
+      &:nth-of-type(2) {
+        font-size: 2rem;
+      }
+      &:last-of-type {
+        font-size: 0.75rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .info {
+    align-items: center;
+    flex-direction: row;
+  }
+}
