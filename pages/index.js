@@ -77,7 +77,7 @@ export async function getServerSideProps(context) {
   const dataGlobal = await respDataGlobal.json()
 
   const respDataCountries = await fetch(
-    'https://disease.sh/v3/covid-19/countries'
+    'https://disease.sh/v3/covid-19/countries?yesterday=true'
   )
   const dataCountries = await respDataCountries.json()
 
