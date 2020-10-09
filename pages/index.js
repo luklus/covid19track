@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 
+import CountriesTable from '../components/CountriesTable'
 import CountrySelect from '../components/CountrySelect'
 import Hero from '../components/Hero'
 import Info from '../components/Info'
@@ -51,6 +52,7 @@ const Home = ({ dataCountries, dataGlobal }) => {
           onSetCountryCode={setCountryCode}
         />
         <Info data={selectedCountry()} />
+        <CountriesTable dataCountries={dataCountries} />
       </main>
     </>
   )

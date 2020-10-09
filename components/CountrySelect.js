@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import styles from '../styles/CountrySelect.module.scss'
 
 const CountrySelect = ({ code, countries, onSetCountryCode }) => {
@@ -31,7 +31,7 @@ const CountrySelect = ({ code, countries, onSetCountryCode }) => {
       onClick={() => setCountryCode(country.iso2)}
     >
       <div className={styles.countrySelect__flag}>
-        <img alt="Flag" loading="lazy" src={country.flag} />
+        <img alt="Flag" loading="lazy" src={country.flag} width="24" />
       </div>
       <div className={styles.countrySelect__name}>{country.country}</div>
     </div>
@@ -47,7 +47,12 @@ const CountrySelect = ({ code, countries, onSetCountryCode }) => {
       >
         <div className={styles.countrySelect__item}>
           <div className={styles.countrySelect__flag}>
-            <img src={countrySelected.flag} alt="" />
+            <img
+              src={countrySelected.flag}
+              alt="Flag"
+              loading="lazy"
+              width="24"
+            />
           </div>
           <div className={styles.countrySelect__name}>
             {countrySelected.country}
@@ -65,7 +70,12 @@ const CountrySelect = ({ code, countries, onSetCountryCode }) => {
               value={find}
             />
             <button onClick={() => toggOpen()}>
-              <img src="/icons/close.svg" alt="Close" width="24" />
+              <img
+                src="/icons/close.svg"
+                alt="Close"
+                loading="lazy"
+                width="24"
+              />
             </button>
           </div>
           <div className={styles.countrySelect__list}>
