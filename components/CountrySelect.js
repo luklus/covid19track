@@ -63,7 +63,7 @@ const CountrySelect = ({ code, countries, onSetCountryCode }) => {
         <div className={styles.countrySelect__selector}>
           <div className={styles.countrySelect__find}>
             <input
-              autocomplete="off"
+              autoComplete="off"
               onChange={(e) => setFind(e.target.value)}
               placeholder="Search"
               type="text"

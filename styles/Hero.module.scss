@@ -1,6 +1,8 @@
 .hero {
+  align-items: center;
   border-bottom: 1px solid var(--gray-500);
-  min-height: 20rem;
-  padding: 1.5rem;
+  display: flex;
+  height: 20rem;
+  justify-content: center;
   width: 100%;
 }

@@ -1,12 +1,16 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import styles from '../styles/CountriesTable.module.scss'
 
 const CountriesTable = ({ dataCountries }) => {
   const [sort, setSort] = useState('country')
   const [sortUP, setSortUP] = useState(true)
+  const tableReference = useRef(null)
 
   const setSortType = (sortType) => {
-    console.log('hh')
+    tableReference.current.scrollIntoView({
+      behavior: 'smooth',
+    })
+
     if (sort === sortType) {
       setSortUP(!sortUP)
     }
@@ -43,7 +47,7 @@ const CountriesTable = ({ dataCountries }) => {
 
   return (
     <section className={styles.countriesTable}>
-      <table>
+      <table ref={tableReference}>
         <thead>
           <tr>
             <th onClick={() => setSortType('country')}>Country</th>

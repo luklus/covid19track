@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
-
 import CountriesTable from '../components/CountriesTable'
+import CountryChart from '../components/CountryChart'
 import CountrySelect from '../components/CountrySelect'
 import Hero from '../components/Hero'
 import Info from '../components/Info'
 
 const Home = ({ dataCountries, dataGlobal }) => {
-  const [code, setCode] = useState('PL')
+  const [code, setCode] = useState('')
 
   const countries = () => {
     const countriesTransformed = dataCountries.map(
@@ -22,7 +22,7 @@ const Home = ({ dataCountries, dataGlobal }) => {
     const worldTransformed = [
       {
         country: 'World',
-        flag: 'https://disease.sh/assets/img/flags/af.png',
+        flag: 'https://disease.sh/assets/img/flags/unknown.png',
         iso2: '',
       },
     ]
@@ -34,7 +34,9 @@ const Home = ({ dataCountries, dataGlobal }) => {
       ? dataGlobal
       : dataCountries.find((country) => country.countryInfo.iso2 === code)
 
-  const setCountryCode = (code) => setCode(code)
+  const setCountryCode = (code) => {
+    setCode(code)
+  }
 
   return (
     <>
@@ -52,7 +54,12 @@ const Home = ({ dataCountries, dataGlobal }) => {
           onSetCountryCode={setCountryCode}
         />
         <Info data={selectedCountry()} />
-        <CountriesTable dataCountries={dataCountries} />
+
+        {code ? (
+          <CountryChart code={code} />
+        ) : (
+          <CountriesTable dataCountries={dataCountries} />
+        )}
       </main>
     </>
   )
