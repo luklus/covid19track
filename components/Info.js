@@ -1,25 +1,25 @@
-import styles from '../styles/BaseInfo.module.scss'
+import styles from '../styles/Info.module.scss'
 
-const BaseInfo = ({ data }) => (
+const Info = ({ data }) => (
   <section className={styles.info}>
     <div className={styles.item}>
-      <p>Przypadki</p>
+      <p>Cases</p>
       <p>{data.cases}</p>
       <p>+ {data.todayCases}</p>
     </div>
 
     <div className={styles.item}>
-      <p>Zgony</p>
+      <p>Deaths</p>
       <p>{data.deaths}</p>
       <p>+ {data.todayDeaths}</p>
     </div>
 
     <div className={styles.item}>
-      <p>Ozdrowienia</p>
+      <p>Recovered</p>
       <p>{data.recovered}</p>
       <p>+ {data.todayRecovered}</p>
     </div>
   </section>
 )
 
-export default BaseInfo
+export default Info

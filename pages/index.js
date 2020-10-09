@@ -2,16 +2,38 @@ import { useState } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 
-import BaseHero from '../components/BaseHero'
-import BaseInfo from '../components/BaseInfo'
+import CountrySelect from '../components/CountrySelect'
+import Hero from '../components/Hero'
+import Info from '../components/Info'
 
 const Home = ({ dataCountries, dataGlobal }) => {
   const [code, setCode] = useState('PL')
+
+  const countries = () => {
+    const countriesTransformed = dataCountries.map(
+      ({ country, countryInfo: { flag, iso2 } }) => ({
+        country,
+        flag,
+        iso2,
+      })
+    )
+
+    const worldTransformed = [
+      {
+        country: 'World',
+        flag: 'https://disease.sh/assets/img/flags/af.png',
+        iso2: '',
+      },
+    ]
+    return [...worldTransformed, ...countriesTransformed]
+  }
 
   const selectedCountry = () =>
     code === ''
       ? dataGlobal
       : dataCountries.find((country) => country.countryInfo.iso2 === code)
+
+  const setCountryCode = (code) => setCode(code)
 
   return (
     <>
@@ -20,10 +42,15 @@ const Home = ({ dataCountries, dataGlobal }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <BaseHero />
+      <Hero />
 
       <main className={styles.main}>
-        <BaseInfo data={selectedCountry()} />
+        <CountrySelect
+          code={code}
+          countries={countries()}
+          onSetCountryCode={setCountryCode}
+        />
+        <Info data={selectedCountry()} />
       </main>
     </>
   )
