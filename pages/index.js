@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
+
 import CountriesTable from '../components/CountriesTable'
 import CountryChart from '../components/CountryChart'
 import CountrySelect from '../components/CountrySelect'
+import Footer from '../components/Footer'
 import Hero from '../components/Hero'
 import Info from '../components/Info'
 
@@ -58,9 +60,14 @@ const Home = ({ dataCountries, dataGlobal }) => {
         {code ? (
           <CountryChart code={code} />
         ) : (
-          <CountriesTable dataCountries={dataCountries} />
+          <CountriesTable
+            dataCountries={dataCountries}
+            onSetCountryCode={setCountryCode}
+          />
         )}
       </main>
+
+      <Footer />
     </>
   )
 }

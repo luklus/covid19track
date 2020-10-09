@@ -35,7 +35,7 @@ const CountryChart = ({ code }) => {
           backgroundColor: '#42A5F5',
           data: dataConfirmed,
           fill: false,
-          label: 'Cases',
+          label: 'Daily Cases',
         },
       ],
     }

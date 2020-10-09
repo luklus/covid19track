@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import styles from '../styles/CountriesTable.module.scss'
 
-const CountriesTable = ({ dataCountries }) => {
+const CountriesTable = ({ dataCountries, onSetCountryCode }) => {
   const [sort, setSort] = useState('country')
   const [sortUP, setSortUP] = useState(true)
   const tableReference = useRef(null)
@@ -35,7 +35,11 @@ const CountriesTable = ({ dataCountries }) => {
 
   const tbody = sortedCountries().map((country) => (
     <tr key={country.country}>
-      <td>{country.country}</td>
+      <td>
+        <span onClick={() => onSetCountryCode(country.countryInfo.iso2)}>
+          {country.country}
+        </span>
+      </td>
       <td>{country.cases}</td>
       <td>{country.todayCases}</td>
       <td>{country.recovered}</td>

@@ -34,7 +34,7 @@
     cursor: pointer;
     display: flex;
     min-height: 2rem;
-    padding: 0.25rem 1rem;
+    padding: 0.5rem 1rem;
   }
 
   &__find {
@@ -73,7 +73,7 @@
   &__list {
     height: auto;
     margin: 0.5rem 0;
-    max-height: 20rem;
+    max-height: 14rem;
     overflow-y: scroll;
   }
 

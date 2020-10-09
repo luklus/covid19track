@@ -29,6 +29,14 @@
       td {
         padding: 0.5rem 1rem 0.5rem 0.5rem;
 
+        span {
+          cursor: pointer;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
         &:not(:first-of-type) {
           text-align: right;
         }
