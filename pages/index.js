@@ -24,7 +24,7 @@ const Home = ({ dataCountries, dataGlobal }) => {
     const worldTransformed = [
       {
         country: 'World',
-        flag: 'https://disease.sh/assets/img/flags/unknown.png',
+        flag: '/earth.png',
         iso2: '',
       },
     ]
@@ -55,6 +55,7 @@ const Home = ({ dataCountries, dataGlobal }) => {
           countries={countries()}
           onSetCountryCode={setCountryCode}
         />
+
         <Info data={selectedCountry()} />
 
         {code ? (

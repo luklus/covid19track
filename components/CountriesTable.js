@@ -1,6 +1,8 @@
 import { useRef, useState } from 'react'
 import styles from '../styles/CountriesTable.module.scss'
 
+import { printNumberToLocaleString } from '../functions/printNumberToLocaleString'
+
 const CountriesTable = ({ dataCountries, onSetCountryCode }) => {
   const [sort, setSort] = useState('country')
   const [sortUP, setSortUP] = useState(true)
@@ -40,12 +42,16 @@ const CountriesTable = ({ dataCountries, onSetCountryCode }) => {
           {country.country}
         </span>
       </td>
-      <td>{country.cases}</td>
-      <td>{country.todayCases}</td>
-      <td>{country.recovered}</td>
-      <td>{country.todayRecovered}</td>
-      <td>{country.deaths}</td>
-      <td>{country.todayDeaths}</td>
+      <td>{printNumberToLocaleString(country.cases)}</td>
+      <td>{printNumberToLocaleString(country.todayCases)}</td>
+      <td>{printNumberToLocaleString(country.casesPerOneMillion)}</td>
+      <td>{printNumberToLocaleString(country.recovered)}</td>
+      <td>{printNumberToLocaleString(country.todayRecovered)}</td>
+      <td>{printNumberToLocaleString(country.deaths)}</td>
+      <td>{printNumberToLocaleString(country.todayDeaths)}</td>
+      <td>{printNumberToLocaleString(country.deathsPerOneMillion)}</td>
+      <td>{printNumberToLocaleString(country.tests)}</td>
+      <td>{printNumberToLocaleString(country.testsPerOneMillion)}</td>
     </tr>
   ))
 
@@ -57,12 +63,22 @@ const CountriesTable = ({ dataCountries, onSetCountryCode }) => {
             <th onClick={() => setSortType('country')}>Country</th>
             <th onClick={() => setSortType('cases')}>Cases</th>
             <th onClick={() => setSortType('todayCases')}>Today Cases</th>
+            <th onClick={() => setSortType('casesPerOneMillion')}>
+              Cases / Mill.
+            </th>
             <th onClick={() => setSortType('recovered')}>Recovered</th>
             <th onClick={() => setSortType('todayRecovered')}>
               Today Recovered
             </th>
             <th onClick={() => setSortType('deaths')}>Deaths</th>
             <th onClick={() => setSortType('todayDeaths')}>Today Deaths</th>
+            <th onClick={() => setSortType('deathsPerOneMillion')}>
+              Deaths / Mill.
+            </th>
+            <th onClick={() => setSortType('tests')}>Tests</th>
+            <th onClick={() => setSortType('testsPerOneMillion')}>
+              Tests / Mill.
+            </th>
           </tr>
         </thead>
 
